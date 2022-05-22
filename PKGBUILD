@@ -3,7 +3,7 @@
 # Contributor: Ramon Buldó <rbuldo@gmail.com>
 
 pkgname=manjaro-browser-settings
-pkgver=20201114
+pkgver=20220522
 pkgrel=1
 pkgdesc="Manjaro Linux settings browser defaults"
 arch=('any')
@@ -18,6 +18,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   date +%Y%m%d
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+
+  # Discover is dead
+  for i in palemoon/distribution.ini firefox/distribution.ini falkon/manjaro/bookmarks.json chrome/bookmarks.html; do
+    sed -i 's/discover/software/g' ${i}
+  done
 }
 
 package() {
