@@ -31,7 +31,7 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   install -d "$pkgdir"/usr/lib/{chrome,chromium,brave,{firefox,firefox-developer-edition,palemoon,thunderbird}/distribution}
   for i in chrome chromium brave; do
     cp -r chrome/* "$pkgdir/usr/lib/${i}/"
