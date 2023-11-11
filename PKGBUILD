@@ -3,7 +3,7 @@
 # Contributor: Ramon Buldó <rbuldo@gmail.com>
 
 pkgname=manjaro-browser-settings
-pkgver=20220522
+pkgver=20231111
 pkgrel=1
 pkgdesc="Manjaro Linux settings browser defaults"
 arch=('any')
@@ -12,20 +12,21 @@ license=('GPL')
 makedepends=('git')
 conflicts=('manjaro-firefox-settings')
 replaces=('manjaro-firefox-settings')
-_commit=9d8e020eccd3b6f9670cd02ee8b16f442a5c719c
+_commit=453f952ccad2ac3b2bc81e1ee8016bc9662ad97e  # branch/master
 source=("git+https://gitlab.manjaro.org/profiles-and-settings/manjaro-browser-settings.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
-  date +%Y%m%d
+  cd "$pkgname"
+  git show -s --date=format:'%Y%m%d' --format=%cd
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
 
   # Discover is dead
   for i in palemoon/distribution.ini firefox/distribution.ini falkon/manjaro/bookmarks.json chrome/bookmarks.html; do
-    sed -i 's/discover/software/g' ${i}
+    sed -i 's/discover/software/g' "${i}"
   done
 }
 
@@ -47,7 +48,6 @@ package() {
   sed -i 's/Firefox/Firefox KDE Edition/' "$pkgdir/etc/manjaro-firefox-kde.ini"
   install -Dm644 firefox/all-companyname.js "$pkgdir/usr/lib/firefox/browser/defaults/preferences/all-companyname.js"
   install -Dm644 firefox/all-companyname.js "$pkgdir/usr/lib/firefox-developer-edition/browser/defaults/preferences/all-companyname.js"
-
 
   # Hooks
   install -Dm644 firefox-pre.hook "$pkgdir/usr/share/libalpm/hooks/firefox-pre.hook"
