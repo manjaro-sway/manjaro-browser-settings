@@ -1,5 +1,4 @@
-# inherits settings from https://github.com/Manjaro-Sway/.github/blob/main/.github/settings.yml
 _extends: manjaro-contrib/.github
 repository:
   homepage: https://gitlab.manjaro.org/packages/community/manjaro-browser-settings.git
-# you can extend settings using https://probot.github.io/apps/settings/
+
