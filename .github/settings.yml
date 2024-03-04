@@ -1,4 +1,4 @@
 _extends: manjaro-contrib/.github
 repository:
   homepage: https://gitlab.manjaro.org/packages/community/manjaro-browser-settings.git
-  topics: arch, package, any
+
