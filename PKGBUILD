@@ -8,13 +8,13 @@ pkgrel=1
 pkgdesc="Manjaro Linux settings browser defaults"
 arch=('any')
 url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-browser-settings"
-license=('GPL')
+license=('GPL-3.0-or-later')
 makedepends=('git')
 conflicts=('manjaro-firefox-settings')
 replaces=('manjaro-firefox-settings')
 _commit=453f952ccad2ac3b2bc81e1ee8016bc9662ad97e  # branch/master
 source=("git+https://gitlab.manjaro.org/profiles-and-settings/manjaro-browser-settings.git#commit=${_commit}")
-sha256sums=('SKIP')
+sha256sums=('84d9fe54e8c87ae5d949fdacf6f0c2f83c54368a3020227fb2c5f341f5da1eb6')
 
 pkgver() {
   cd "$pkgname"
@@ -23,11 +23,6 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-
-  # Discover is dead
-  for i in palemoon/distribution.ini firefox/distribution.ini falkon/manjaro/bookmarks.json chrome/bookmarks.html; do
-    sed -i 's/discover/software/g' "${i}"
-  done
 }
 
 package() {
