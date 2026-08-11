@@ -1,6 +1,6 @@
 # Maintainer: Stefano Capitani <stefano@manjaro.org>
-# Contributor: Bernhard Landauer <oberon@manjaro.org
-# Contributor: Ramon Buldó <rbuldo@gmail.com>
+# Contributor: Bernhard Landauer <bernhard@manjaro.org
+# Contributor: Ramon Buldó
 
 pkgname=manjaro-browser-settings
 pkgver=20231111
